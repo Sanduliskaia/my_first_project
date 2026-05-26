@@ -7,185 +7,184 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500&display=swap');
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --emerald:    #0d9e78;
+      --emerald:      #0d9e78;
       --emerald-dark: #065f46;
-      --gold:       #c9a84c;
-      --orange:     #e07b39;
-      --light:      #f0faf6;
+      --gold:         #c9a84c;
+      --orange:       #e07b39;
+      --ruby:         #9b2335;
+      --burgundy:     #6b1a2a;
     }
 
     body {
       font-family: 'Montserrat', sans-serif;
-      background: #050e0a;
+      background: #06090a;
       color: #e8f5ef;
       min-height: 100vh;
       overflow-x: hidden;
     }
 
-    /* ── Анимированный фон ── */
+    /* ── Фон ── */
     .bg-canvas {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      background: radial-gradient(ellipse at 20% 30%, #0d9e7822 0%, transparent 60%),
-                  radial-gradient(ellipse at 80% 70%, #c9a84c18 0%, transparent 55%),
-                  radial-gradient(ellipse at 50% 50%, #e07b3910 0%, transparent 70%),
-                  #050e0a;
-      animation: bgPulse 8s ease-in-out infinite alternate;
+      position: fixed; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse at 15% 25%, rgba(13,158,120,0.18) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 75%, rgba(201,168,76,0.14) 0%, transparent 55%),
+        radial-gradient(ellipse at 75% 20%, rgba(155,35,53,0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 30% 80%, rgba(224,123,57,0.10) 0%, transparent 50%),
+        #06090a;
+      animation: bgPulse 9s ease-in-out infinite alternate;
     }
-
     @keyframes bgPulse {
       0%   { filter: hue-rotate(0deg) brightness(1); }
-      50%  { filter: hue-rotate(8deg) brightness(1.08); }
-      100% { filter: hue-rotate(-5deg) brightness(0.95); }
+      50%  { filter: hue-rotate(6deg) brightness(1.06); }
+      100% { filter: hue-rotate(-4deg) brightness(0.96); }
     }
 
     /* ── Частицы ── */
-    .particles {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
-
-    .particle {
-      position: absolute;
-      border-radius: 50%;
-      opacity: 0;
-      animation: float linear infinite;
-    }
-
-    @keyframes float {
+    .particles { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .particle  { position: absolute; border-radius: 50%; opacity: 0; animation: floatUp linear infinite; }
+    @keyframes floatUp {
       0%   { transform: translateY(100vh) scale(0); opacity: 0; }
-      10%  { opacity: 0.6; }
-      90%  { opacity: 0.3; }
-      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+      10%  { opacity: 0.55; }
+      90%  { opacity: 0.25; }
+      100% { transform: translateY(-10vh) scale(1.3); opacity: 0; }
     }
 
     /* ── Обёртка ── */
     .wrapper {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column; align-items: center;
       padding: 60px 20px 80px;
     }
 
     /* ── Карточка ── */
     .card {
-      width: 100%;
-      max-width: 720px;
-      background: linear-gradient(145deg, rgba(13,158,120,0.08), rgba(201,168,76,0.06), rgba(224,123,57,0.05));
-      border: 1px solid rgba(13,158,120,0.25);
-      border-radius: 28px;
-      padding: 56px 52px;
-      backdrop-filter: blur(18px);
-      box-shadow: 0 0 60px rgba(13,158,120,0.12), 0 0 120px rgba(201,168,76,0.06);
-      position: relative;
+      width: 100%; max-width: 760px;
+      background: linear-gradient(150deg,
+        rgba(13,158,120,0.07),
+        rgba(6,9,10,0.85),
+        rgba(201,168,76,0.06),
+        rgba(155,35,53,0.05));
+      border: 1px solid rgba(13,158,120,0.22);
+      border-radius: 32px;
       overflow: hidden;
+      backdrop-filter: blur(22px);
+      box-shadow:
+        0 0 70px rgba(13,158,120,0.10),
+        0 0 130px rgba(201,168,76,0.06),
+        0 0 90px  rgba(155,35,53,0.08);
+      position: relative;
     }
 
+    /* Переливающийся бордер */
     .card::before {
       content: '';
-      position: absolute;
-      top: -2px; left: -2px; right: -2px; bottom: -2px;
-      border-radius: 29px;
-      background: linear-gradient(135deg, #0d9e78, #c9a84c, #e07b39, #0d9e78);
-      background-size: 300% 300%;
-      animation: borderShimmer 5s linear infinite;
-      z-index: -1;
-      opacity: 0.4;
+      position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px;
+      border-radius: 33px;
+      background: linear-gradient(135deg, #0d9e78, #c9a84c, #e07b39, #9b2335, #0d9e78);
+      background-size: 400% 400%;
+      animation: borderShimmer 6s linear infinite;
+      z-index: -1; opacity: 0.35;
     }
-
     @keyframes borderShimmer {
       0%   { background-position: 0% 50%; }
       50%  { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
 
-    /* ── Аватар ── */
-    .avatar-wrap {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 32px;
+    /* ── Верхний блок с фото ── */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      overflow: hidden;
     }
 
-    .avatar {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--emerald), var(--gold), var(--orange));
-      background-size: 200% 200%;
-      animation: avatarGlow 4s ease-in-out infinite alternate;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 52px;
-      box-shadow: 0 0 32px rgba(13,158,120,0.4), 0 0 64px rgba(201,168,76,0.2);
+    .hero-photo {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      display: block;
+      filter: saturate(0.85) brightness(0.75);
+      transition: filter 0.6s;
     }
 
-    @keyframes avatarGlow {
-      0%   { background-position: 0% 0%;   box-shadow: 0 0 32px rgba(13,158,120,0.5), 0 0 64px rgba(201,168,76,0.2); }
-      100% { background-position: 100% 100%; box-shadow: 0 0 48px rgba(201,168,76,0.5), 0 0 80px rgba(224,123,57,0.3); }
+    /* Градиентный оверлей поверх фото */
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to bottom,
+          rgba(6,9,10,0.15) 0%,
+          rgba(6,9,10,0.05) 30%,
+          rgba(6,9,10,0.55) 65%,
+          rgba(6,9,10,0.95) 100%),
+        linear-gradient(135deg,
+          rgba(13,158,120,0.18) 0%,
+          transparent 50%,
+          rgba(155,35,53,0.12) 100%);
     }
 
-    /* ── Имя ── */
+    /* Декоративная рамка-свечение поверх фото */
+    .hero-glow {
+      position: absolute; inset: 0;
+      box-shadow: inset 0 -80px 60px rgba(6,9,10,0.9),
+                  inset 0 0 40px rgba(13,158,120,0.08);
+      pointer-events: none;
+    }
+
+    /* Имя поверх фото */
+    .hero-name {
+      position: absolute;
+      bottom: 28px; left: 40px; right: 40px;
+    }
+
     .name {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2.4rem;
+      font-size: 2.5rem;
       font-weight: 700;
-      text-align: center;
-      background: linear-gradient(90deg, #0d9e78, #c9a84c, #e07b39);
-      background-size: 200%;
+      background: linear-gradient(90deg, #5de8b8, #e8c96a, #f0a070, #e88899);
+      background-size: 250%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      animation: textShimmer 4s linear infinite;
-      line-height: 1.2;
-      margin-bottom: 8px;
+      animation: textShimmer 5s linear infinite;
+      line-height: 1.15;
+      text-shadow: none;
     }
-
     @keyframes textShimmer {
       0%   { background-position: 0% 50%; }
-      100% { background-position: 200% 50%; }
+      100% { background-position: 250% 50%; }
     }
 
     .title {
-      text-align: center;
-      font-size: 0.85rem;
+      font-size: 0.78rem;
       font-weight: 500;
-      letter-spacing: 3px;
+      letter-spacing: 3.5px;
       text-transform: uppercase;
       color: var(--gold);
       opacity: 0.85;
-      margin-bottom: 40px;
+      margin-top: 6px;
     }
 
-    /* ── Разделитель ── */
+    /* ── Контент ── */
+    .content {
+      padding: 36px 48px 52px;
+    }
+
     .divider {
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--emerald), var(--gold), var(--orange), transparent);
-      margin-bottom: 40px;
-      opacity: 0.5;
+      width: 100%; height: 1px;
+      background: linear-gradient(90deg, transparent, #0d9e78, #c9a84c, #e07b39, #9b2335, transparent);
+      margin-bottom: 36px;
+      opacity: 0.45;
     }
 
-    /* ── Секции ── */
-    .section {
-      margin-bottom: 32px;
-    }
+    .section { margin-bottom: 28px; }
 
     .section-label {
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--gold);
@@ -194,98 +193,66 @@
     }
 
     .section-text {
-      font-size: 0.97rem;
-      line-height: 1.85;
+      font-size: 0.95rem;
+      line-height: 1.9;
       color: #c8e8dc;
       font-weight: 300;
     }
 
-    /* ── Теги ── */
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 8px;
-    }
+    .section-text strong { color: #5de8b8; font-weight: 500; }
 
+    /* ── Теги ── */
+    .tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
     .tag {
       padding: 6px 16px;
       border-radius: 100px;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 500;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.4px;
       border: 1px solid;
       transition: all 0.3s;
     }
+    .tag:hover { transform: translateY(-2px); }
 
-    .tag:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 16px rgba(13,158,120,0.3);
-    }
-
-    .tag-emerald {
-      border-color: rgba(13,158,120,0.5);
-      color: #5de8b8;
-      background: rgba(13,158,120,0.1);
-    }
-
-    .tag-gold {
-      border-color: rgba(201,168,76,0.5);
-      color: #e8c96a;
-      background: rgba(201,168,76,0.08);
-    }
-
-    .tag-orange {
-      border-color: rgba(224,123,57,0.5);
-      color: #f0a070;
-      background: rgba(224,123,57,0.08);
-    }
+    .tag-emerald { border-color: rgba(13,158,120,0.5);  color: #5de8b8; background: rgba(13,158,120,0.08); }
+    .tag-gold    { border-color: rgba(201,168,76,0.5);  color: #e8c96a; background: rgba(201,168,76,0.07); }
+    .tag-orange  { border-color: rgba(224,123,57,0.5);  color: #f0a070; background: rgba(224,123,57,0.07); }
+    .tag-ruby    { border-color: rgba(155,35,53,0.5);   color: #e88899; background: rgba(155,35,53,0.08); }
 
     /* ── Кнопка Telegram ── */
-    .btn-wrap {
-      display: flex;
-      justify-content: center;
-      margin-top: 44px;
-    }
+    .btn-wrap { display: flex; justify-content: center; margin-top: 44px; }
 
     .btn-telegram {
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      padding: 16px 40px;
+      padding: 16px 44px;
       border-radius: 100px;
       font-family: 'Montserrat', sans-serif;
       font-size: 0.95rem;
       font-weight: 500;
       letter-spacing: 1px;
       text-decoration: none;
-      color: #050e0a;
-      background: linear-gradient(135deg, var(--emerald), var(--gold), var(--orange));
+      color: #06090a;
+      background: linear-gradient(135deg, #0d9e78, #c9a84c, #e07b39);
       background-size: 200% 200%;
-      animation: btnFlow 3s ease infinite;
-      box-shadow: 0 4px 32px rgba(13,158,120,0.35), 0 2px 16px rgba(201,168,76,0.2);
+      animation: btnFlow 3.5s ease infinite;
+      box-shadow: 0 4px 36px rgba(13,158,120,0.35), 0 2px 18px rgba(201,168,76,0.2);
       transition: transform 0.3s, box-shadow 0.3s;
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
     }
-
     .btn-telegram::after {
       content: '';
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background: rgba(255,255,255,0);
       transition: background 0.3s;
       border-radius: 100px;
     }
-
     .btn-telegram:hover {
       transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 8px 48px rgba(13,158,120,0.5), 0 4px 24px rgba(224,123,57,0.3);
+      box-shadow: 0 8px 52px rgba(13,158,120,0.5), 0 4px 24px rgba(224,123,57,0.3);
     }
-
-    .btn-telegram:hover::after {
-      background: rgba(255,255,255,0.08);
-    }
+    .btn-telegram:hover::after { background: rgba(255,255,255,0.08); }
 
     @keyframes btnFlow {
       0%   { background-position: 0% 50%; }
@@ -293,119 +260,113 @@
       100% { background-position: 0% 50%; }
     }
 
-    .btn-icon {
-      width: 22px;
-      height: 22px;
-    }
+    .btn-icon { width: 22px; height: 22px; flex-shrink: 0; }
 
     /* ── Футер ── */
     .footer {
-      margin-top: 40px;
-      font-size: 0.72rem;
+      margin-top: 36px;
+      font-size: 0.7rem;
       letter-spacing: 2px;
-      color: rgba(200,232,220,0.3);
+      color: rgba(200,232,220,0.25);
       text-align: center;
     }
 
     /* ── Адаптив ── */
     @media (max-width: 600px) {
-      .card { padding: 40px 28px; }
-      .name { font-size: 1.8rem; }
+      .hero { height: 280px; }
+      .hero-name { left: 24px; right: 24px; bottom: 20px; }
+      .name { font-size: 1.75rem; }
+      .content { padding: 28px 24px 44px; }
     }
   </style>
 </head>
 <body>
 
-<!-- Анимированный фон -->
 <div class="bg-canvas"></div>
-
-<!-- Частицы -->
 <div class="particles" id="particles"></div>
 
 <div class="wrapper">
   <div class="card">
 
-    <!-- Аватар -->
-    <div class="avatar-wrap">
-      <div class="avatar">✦</div>
-    </div>
-
-    <!-- Имя -->
-    <h1 class="name">Сандульская<br>Анна Александровна</h1>
-    <p class="title">Healthcare App Developer</p>
-
-    <div class="divider"></div>
-
-    <!-- О себе -->
-    <div class="section">
-      <div class="section-label">О себе</div>
-      <p class="section-text">
-        Я разработчик приложений в сфере <strong style="color:#5de8b8">healthcare</strong> —
-        цифрового здравоохранения и помогающей терапии. Моя миссия — создавать
-        технологические инструменты, которые делают психологическую и терапевтическую
-        помощь доступнее, теплее и эффективнее для каждого человека.
-      </p>
-    </div>
-
-    <!-- Направления -->
-    <div class="section">
-      <div class="section-label">Направления работы</div>
-      <p class="section-text">
-        Разрабатываю приложения, которые поддерживают людей на пути к ментальному
-        и физическому благополучию. Объединяю современные технологии с подходами
-        доказательной терапии, чтобы каждый мог получить помощь в нужный момент.
-      </p>
-    </div>
-
-    <!-- Специализация -->
-    <div class="section">
-      <div class="section-label">Специализация</div>
-      <div class="tags">
-        <span class="tag tag-emerald">Healthcare Apps</span>
-        <span class="tag tag-emerald">Помогающая терапия</span>
-        <span class="tag tag-gold">Mental Health Tech</span>
-        <span class="tag tag-gold">UX для здоровья</span>
-        <span class="tag tag-orange">Digital Wellbeing</span>
-        <span class="tag tag-orange">Mobile Development</span>
+    <!-- Верхний блок с фото -->
+    <div class="hero">
+      <img class="hero-photo" src="0Z0A8393.jpg" alt="Сандульская Анна Александровна"/>
+      <div class="hero-overlay"></div>
+      <div class="hero-glow"></div>
+      <div class="hero-name">
+        <h1 class="name">Сандульская<br>Анна Александровна</h1>
+        <p class="title">Healthcare App Developer</p>
       </div>
     </div>
 
-    <!-- Кнопка -->
-    <div class="btn-wrap">
-      <a class="btn-telegram" href="https://t.me/Anna_Sandulskaya" target="_blank" rel="noopener">
-        <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 13.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/>
-        </svg>
-        Связаться в Telegram
-      </a>
-    </div>
+    <!-- Контент -->
+    <div class="content">
 
+      <div class="divider"></div>
+
+      <div class="section">
+        <div class="section-label">О себе</div>
+        <p class="section-text">
+          Я разработчик приложений в сфере <strong>healthcare</strong> —
+          цифрового здравоохранения и помогающей терапии. Моя миссия — создавать
+          технологические инструменты, которые делают психологическую
+          и терапевтическую помощь доступнее, теплее и эффективнее для каждого человека.
+        </p>
+      </div>
+
+      <div class="section">
+        <div class="section-label">Направления работы</div>
+        <p class="section-text">
+          Разрабатываю приложения, которые поддерживают людей на пути к ментальному
+          и физическому благополучию. Объединяю современные технологии с подходами
+          доказательной терапии, чтобы каждый мог получить помощь в нужный момент.
+        </p>
+      </div>
+
+      <div class="section">
+        <div class="section-label">Специализация</div>
+        <div class="tags">
+          <span class="tag tag-emerald">Healthcare Apps</span>
+          <span class="tag tag-emerald">Помогающая терапия</span>
+          <span class="tag tag-gold">Mental Health Tech</span>
+          <span class="tag tag-gold">UX для здоровья</span>
+          <span class="tag tag-orange">Digital Wellbeing</span>
+          <span class="tag tag-ruby">Mobile Development</span>
+        </div>
+      </div>
+
+      <div class="btn-wrap">
+        <a class="btn-telegram" href="https://t.me/Anna_Sandulskaya" target="_blank" rel="noopener">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 13.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/>
+          </svg>
+          Связаться в Telegram
+        </a>
+      </div>
+
+    </div>
   </div>
 
   <div class="footer">© 2026 · Anna Sandulskaya · Healthcare Developer</div>
 </div>
 
 <script>
-  // Генерация частиц
   const container = document.getElementById('particles');
-  const colors = ['#0d9e78', '#c9a84c', '#e07b39', '#5de8b8', '#f0c060'];
-
-  for (let i = 0; i < 35; i++) {
+  const colors = ['#0d9e78','#c9a84c','#e07b39','#5de8b8','#e88899','#f0c060'];
+  for (let i = 0; i < 38; i++) {
     const p = document.createElement('div');
     p.className = 'particle';
     const size = Math.random() * 4 + 1;
     p.style.cssText = `
-      width: ${size}px;
-      height: ${size}px;
-      left: ${Math.random() * 100}%;
-      background: ${colors[Math.floor(Math.random() * colors.length)]};
-      animation-duration: ${Math.random() * 12 + 8}s;
-      animation-delay: ${Math.random() * 10}s;
-      filter: blur(${Math.random() * 1.5}px);
+      width:${size}px; height:${size}px;
+      left:${Math.random()*100}%;
+      background:${colors[Math.floor(Math.random()*colors.length)]};
+      animation-duration:${Math.random()*12+8}s;
+      animation-delay:${Math.random()*10}s;
+      filter:blur(${Math.random()*1.5}px);
     `;
     container.appendChild(p);
   }
 </script>
-
 </body>
 </html>
